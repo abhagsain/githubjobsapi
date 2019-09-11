@@ -3,7 +3,7 @@ import "./index.css";
 import Hero from "./components/Hero/Hero";
 import JobCard from "./components/JobSection/Jobs";
 import axios from "axios";
-import data from "./data.json";
+// import data from "./data.json";
 import GlobalContext from "./context/GlobalContext";
 import Navbar from "./components/Navbar/Navbar";
 
@@ -64,11 +64,6 @@ class App extends React.Component {
             error: { message: err.message, status: true },
           });
         });
-      /* axios.get(URL).then(el => {
-        const { data } = el;
-        console.log("TCL: data", data);
-        this.setState({ jobs: data, loading: false, searchedText: "" });
-      }); */
     }
   };
   clearSearch = () => {
@@ -82,14 +77,13 @@ class App extends React.Component {
     });
   };
   componentDidMount() {
-    this.setState({ jobs: data, loading: false });
+    // this.setState({ jobs: data, loading: false });
     // this.setState({ loading: false });
-    /* const URL = `/positions.json`;
+    const URL = `/positions.json`;
     axios.get(URL).then(el => {
       const { data } = el;
-      console.log("TCL: data", data);
       this.setState({ jobs: data, loading: false });
-    }); */
+    });
   }
 
   render() {

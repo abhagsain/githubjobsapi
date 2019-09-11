@@ -45,7 +45,7 @@ export default class SearchBar extends Component {
             type="text"
             onChange={onTextChanged}
             className="shadow-xl appearance-none rounded py-4 px-6 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-2xl hover:shadow-2xl inline w-full"
-            placeholder="Location: Berlin"
+            placeholder="eg. New York"
           />
           {/* <input
             name="type"
