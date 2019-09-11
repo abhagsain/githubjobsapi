@@ -2,13 +2,11 @@ import React, { Component } from "react";
 import GlobalContext from "../../context/GlobalContext";
 export default class SearchBar extends Component {
   static contextType = GlobalContext;
-  componentDidMount() {
-    console.log(this.context);
-  }
-
   disableButton = () => {
-    const { searchedText } = this.context;
-    return searchedText.trim() === "";
+    const { searchedText, type, location } = this.context;
+    return (
+      searchedText.trim() === "" && type.trim() === "" && location.trim() === ""
+    );
   };
   render() {
     const {
@@ -27,7 +25,7 @@ export default class SearchBar extends Component {
           "active:bg-red-100 active:bg-blue-800 shadow-2xl hover:shadow-xl active:shadow"
         );
     return (
-      <div className="w-full max-w-xl">
+      <div className="w-full max-w-xl p-5 lg:p-0">
         <div className="w-full">
           <input
             value={searchedText}

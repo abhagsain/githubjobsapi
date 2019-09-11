@@ -44,11 +44,15 @@ export default class JobCard extends Component {
               })}
             {data && data.length === 0 && (
               <div className="text-center">
-                <h2 className="text-4xl">
-                  No Result for{" "}
-                  <p className="text-gray-600 inline">{filterValue}</p>
+                <h2 className="text-4xl py-5">
+                  No Result {filterValue && "for"}
+                  {filterValue && (
+                    <p className="text-gray-600 inline">{filterValue}</p>
+                  )}
                   <small className="block text-base">
-                    Clear filter to see all the results
+                    {filterValue && "Clear filter to see all the results"}
+                    {!filterValue &&
+                      "Search a broader term. Example React Developer "}
                   </small>
                 </h2>
               </div>
