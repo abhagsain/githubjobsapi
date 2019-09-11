@@ -5,6 +5,7 @@ import JobCard from "./components/JobSection/Jobs";
 import axios from "axios";
 import data from "./data.json";
 import GlobalContext from "./context/GlobalContext";
+import Navbar from "./components/Navbar/Navbar";
 
 class App extends React.Component {
   state = {
@@ -105,6 +106,7 @@ class App extends React.Component {
         }}
       >
         <div>
+          <Navbar />
           <Hero />
           <JobCard />
         </div>

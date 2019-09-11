@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Job from "./Job";
 import Spinner from "../Spinner";
 import GlobalContext from "../../context/GlobalContext";
-import Pagination from "../pagination/Pagination";
+import Pagination from "../Pagination/Pagination";
 export default class JobCard extends Component {
   static contextType = GlobalContext;
   filterSearches = (jobs, filterValue) => {
@@ -117,6 +117,15 @@ export default class JobCard extends Component {
             )}
           </React.Fragment>
         )}
+        <nav className="flex bg-gray-900 text-white py-3 px-10 items-baseline justify-between my-10 rounded">
+          <a
+            href="https://twitter.com/BhagsainAnurag"
+            className="text-2xl font-bold hover:underline"
+            target="_blank"
+          >
+            Made with &hearts; by Anurag Bhagsain
+          </a>
+        </nav>
       </div>
     );
   }
