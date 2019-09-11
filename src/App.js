@@ -13,13 +13,12 @@ class App extends React.Component {
     loading: true,
     error: { status: false, message: "" },
     filterValue: "",
+    filteredJobs: [],
   };
   onSearched = ({ target: { value } }) => {
-    console.log("TCL: App -> onSearched -> value", value);
     this.setState({ searchedText: value });
   };
   onFilter = ({ target: { value } }) => {
-    console.log(value);
     this.setState({ filterValue: value });
   };
   onSubmit = e => {

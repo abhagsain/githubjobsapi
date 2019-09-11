@@ -5,7 +5,10 @@ import GlobalContext from "../../context/GlobalContext";
 export default class JobCard extends Component {
   static contextType = GlobalContext;
   render() {
-    const { jobs: data, loading, filterValue, onFilter } = this.context;
+    const { jobs, loading, filterValue, onFilter } = this.context;
+    const data = jobs.filter(el => {
+      return el.title.toLowerCase().includes(filterValue.toLowerCase());
+    });
     return (
       <div className="flex flex-col justify-center items-center my-10 mx-5">
         {loading ? (
@@ -23,16 +26,22 @@ export default class JobCard extends Component {
                 type="text"
                 value={filterValue}
                 onChange={onFilter}
-                className="shadow appearance-none rounded py-4 px-6 text-gray-700 leading-tight focus:outline-none focus: inline w-full lg:w-1/3 self-center"
+                className="shadow appearance-none rounded py-4 px-6 text-gray-700 leading-tight focus:outline-none focus: inline w-full lg:w-2/3 self-center"
                 placeholder="Filter Searches eg. Engineer, Manager"
               />
             </div>
-
-            {/* <h2 className="text-2xl self-start my-5">20 Jobs Found</h2> */}
             {data &&
               data.map(res => {
                 return <Job key={res.id} data={res} />;
               })}
+            {data && data.length === 0 && (
+              <div className="text-center">
+                <h2 className="text-4xl">
+                  No Result for{" "}
+                  <p className="text-gray-600 inline">{filterValue}</p>
+                </h2>
+              </div>
+            )}
           </div>
         )}
       </div>
