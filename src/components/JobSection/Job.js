@@ -1,7 +1,8 @@
+/* eslint-disable react/jsx-no-target-blank */
 import React from "react";
 
 export default function Job({
-  data: { title, type, company, url, location, company_logo },
+  data: { title, type, company, url, location, company_url },
 }) {
   return (
     <div className="shadow-md  bg-white p-5 border-b">
@@ -9,14 +10,15 @@ export default function Job({
         <div className="w-2/3">
           <a
             href={url}
-            // eslint-disable-next-line react/jsx-no-target-blank
             target="_blank"
             className="text-xl lg:text-2xl font-semibold hover:underline"
           >
             {title}
           </a>
           <div className="flex mt-2">
-            <p>{company}</p>
+            <a href={company_url} target="_blank" className="hover:underline">
+              {company}
+            </a>
             <p className="ml-5 text-green-800 font-bold">{type}</p>
           </div>
         </div>

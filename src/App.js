@@ -14,9 +14,14 @@ class App extends React.Component {
     error: { status: false, message: "" },
     filterValue: "",
     filteredJobs: [],
+    location: "",
+    type: "",
   };
   onSearched = ({ target: { value } }) => {
     this.setState({ searchedText: value });
+  };
+  onTextChanged = ({ target }) => {
+    this.setState({ [target.name]: target.value });
   };
   onFilter = ({ target: { value } }) => {
     this.setState({ filterValue: value });
@@ -27,7 +32,7 @@ class App extends React.Component {
     const { searchedText } = this.state;
     if (searchedText && searchedText.trim()) {
       // Call the api
-      const URL = `/positions.json?description=${searchedText}&location=new+york`;
+      const URL = `/positions.json?description=${searchedText}`;
       this.setState({ loading: true });
       axios.get(URL).then(el => {
         const { data } = el;
@@ -37,13 +42,13 @@ class App extends React.Component {
     }
   };
   componentDidMount() {
-    // this.setState({ jobs: data, loading: false });
-    const URL = `/positions.json`;
+    this.setState({ jobs: data, loading: false });
+    /* const URL = `/positions.json`;
     axios.get(URL).then(el => {
       const { data } = el;
       console.log("TCL: data", data);
       this.setState({ jobs: data, loading: false });
-    });
+    }); */
   }
 
   render() {
@@ -54,6 +59,7 @@ class App extends React.Component {
           onSubmit: this.onSubmit,
           onSearched: this.onSearched,
           onFilter: this.onFilter,
+          onTextChanged: this.onTextChanged,
         }}
       >
         <div>
