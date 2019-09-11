@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import Job from "./Job";
 import Spinner from "../Spinner";
 import GlobalContext from "../../context/GlobalContext";
+import Pagination from "../pagination/Pagination";
 export default class JobCard extends Component {
   static contextType = GlobalContext;
-  render() {
-    const { jobs, loading, filterValue, onFilter, error } = this.context;
-    const data = jobs.filter(el => {
+  filterSearches = (jobs, filterValue) => {
+    return jobs.filter(el => {
       const title = el.title.toLowerCase();
       const type = el.type.toLowerCase();
       const location = el.location.toLowerCase();
@@ -17,6 +17,21 @@ export default class JobCard extends Component {
         location.includes(globalFilterValue)
       );
     });
+  };
+
+  render() {
+    const {
+      jobs,
+      loading,
+      filterValue,
+      pagination: { currentPage, postPerPage },
+      onFilter,
+      error,
+    } = this.context;
+    const indexOfLastPost = currentPage * postPerPage;
+    const indexOfFirstPost = indexOfLastPost - postPerPage;
+    const d = this.filterSearches(jobs, filterValue);
+    const data = d.slice(indexOfFirstPost, indexOfLastPost);
     return (
       <div className="flex flex-col justify-center items-center my-10 mx-5">
         {loading ? (
@@ -42,6 +57,7 @@ export default class JobCard extends Component {
                     placeholder="Filter Searches eg. Engineer or Remote or Berlin etc"
                   />
                 </div>
+                <Pagination totalPosts={d.length} postsPerPage={postPerPage} />
                 {data &&
                   data.map(res => {
                     return <Job key={res.id} data={res} />;

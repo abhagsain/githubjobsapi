@@ -16,6 +16,10 @@ class App extends React.Component {
     filteredJobs: [],
     location: "",
     type: "",
+    pagination: {
+      currentPage: 1,
+      postPerPage: 10,
+    },
   };
   onSearched = ({ target: { value } }) => {
     this.setState({ searchedText: value });
@@ -24,7 +28,10 @@ class App extends React.Component {
     this.setState({ [target.name]: target.value });
   };
   onFilter = ({ target: { value } }) => {
-    this.setState({ filterValue: value });
+    this.setState({
+      filterValue: value,
+      pagination: { ...this.state.pagination, currentPage: 1 },
+    });
   };
   onSubmit = e => {
     e.preventDefault();
@@ -68,6 +75,11 @@ class App extends React.Component {
     if (searchedText || location)
       this.setState({ searchedText: "", location: "" });
   };
+  paginate = pageNumber => {
+    this.setState({
+      pagination: { ...this.state.pagination, currentPage: pageNumber },
+    });
+  };
   componentDidMount() {
     this.setState({ jobs: data, loading: false });
     /* const URL = `/positions.json`;
@@ -88,6 +100,7 @@ class App extends React.Component {
           onFilter: this.onFilter,
           onTextChanged: this.onTextChanged,
           clearSearch: this.clearSearch,
+          paginate: this.paginate,
         }}
       >
         <div>
