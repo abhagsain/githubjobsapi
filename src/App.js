@@ -82,6 +82,7 @@ class App extends React.Component {
   };
   componentDidMount() {
     this.setState({ jobs: data, loading: false });
+    // this.setState({ loading: false });
     /* const URL = `/positions.json`;
     axios.get(URL).then(el => {
       const { data } = el;

@@ -19,6 +19,26 @@ export default class JobCard extends Component {
     });
   };
 
+  showNoResults = (data, filterValue) => {
+    return (
+      data &&
+      data.length === 0 && (
+        <div className="text-center">
+          <h2 className="text-4xl py-5">
+            No Result {filterValue && " for "}
+            {filterValue && (
+              <p className="text-gray-600 inline">{filterValue}</p>
+            )}
+            <small className="block text-base mt-3">
+              {filterValue && "Clear filter to see all the results"}
+              {!filterValue &&
+                "Search a broader term. Example React Developer "}
+            </small>
+          </h2>
+        </div>
+      )
+    );
+  };
   render() {
     const {
       jobs,
@@ -44,7 +64,8 @@ export default class JobCard extends Component {
                   <h2 className="text-4xl my-5 text-gray-800 ">
                     Explore
                     <small className="text-sm block">
-                      Found {data.length} results
+                      {data.length} results{" "}
+                      {data && data.length !== 0 ? "per page" : ""}
                     </small>
                   </h2>
                   <input
@@ -57,7 +78,12 @@ export default class JobCard extends Component {
                     placeholder="Filter Searches eg. Engineer or Remote or Berlin etc"
                   />
                 </div>
-                <Pagination totalPosts={d.length} postsPerPage={postPerPage} />
+                {data.length > 0 && (
+                  <Pagination
+                    totalPosts={d.length}
+                    postsPerPage={postPerPage}
+                  />
+                )}
                 {data &&
                   data.map(res => {
                     return <Job key={res.id} data={res} />;
