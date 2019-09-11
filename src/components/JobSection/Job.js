@@ -4,7 +4,7 @@ export default function Job({
   data: { title, type, company, url, company_url },
 }) {
   return (
-    <div className="shadow-md w-full xl:w-2/3 bg-white p-5 border-b">
+    <div className="shadow-md  bg-white p-5 border-b">
       <div className="flex justify-start lg:justify-between">
         <div className="w-2/3">
           <a

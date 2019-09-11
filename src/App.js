@@ -3,10 +3,14 @@ import "./index.css";
 import Hero from "./components/Hero/Hero";
 import JobCard from "./components/JobSection/JobCard";
 import axios from "axios";
+import data from "./data.json";
+
 class App extends React.Component {
   state = {
     jobs: [],
     searchedText: "",
+    loading: true,
+    erro: { status: false, message: "" },
   };
   onSearched = ({ target: { value } }) => {
     this.setState({ searchedText: value });
@@ -26,12 +30,12 @@ class App extends React.Component {
     }
   };
   componentDidMount() {
-    const URL = `/positions.json?description=javascript&location=new+york`;
-    axios.get(URL).then(el => {
-      const { data } = el;
-      console.log("TCL: data", data);
-      this.setState({ jobs: data });
-    });
+    // const URL = `/positions.json?description=javascript&location=new+york`;
+    // axios.get(URL).then(el => {
+    //   const { data } = el;
+    //   console.log("TCL: data", data);
+    //   this.setState({ jobs: data });
+    // });
   }
 
   render() {
@@ -43,7 +47,7 @@ class App extends React.Component {
           searchedValue={searchedText}
           onSubmit={this.onSubmit}
         />
-        <JobCard jobs={jobs} />
+        <JobCard jobs={data} />
       </div>
     );
   }
