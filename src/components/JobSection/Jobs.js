@@ -64,8 +64,7 @@ export default class JobCard extends Component {
                   <h2 className="text-4xl my-5 text-gray-800 ">
                     Explore
                     <small className="text-sm block">
-                      {data.length} results{" "}
-                      {data && data.length !== 0 ? "per page" : ""}
+                      {data.length} results on this page
                     </small>
                   </h2>
                   <input
@@ -115,17 +114,17 @@ export default class JobCard extends Component {
                 </h2>
               </div>
             )}
+            <nav className="flex bg-gray-900 text-white py-3 px-10 items-baseline justify-between my-10 rounded">
+              <a
+                href="https://twitter.com/BhagsainAnurag"
+                className="sm:text-2xl font-bold hover:underline"
+                target="_blank"
+              >
+                Made with &hearts; by Anurag Bhagsain
+              </a>
+            </nav>
           </React.Fragment>
         )}
-        <nav className="flex bg-gray-900 text-white py-3 px-10 items-baseline justify-between my-10 rounded">
-          <a
-            href="https://twitter.com/BhagsainAnurag"
-            className="text-2xl font-bold hover:underline"
-            target="_blank"
-          >
-            Made with &hearts; by Anurag Bhagsain
-          </a>
-        </nav>
       </div>
     );
   }
