@@ -6,23 +6,32 @@ export default function Job({
 }) {
   return (
     <div className="shadow-md  bg-white p-5 border-b">
-      <div className="flex justify-start lg:justify-between">
+      <a
+        href={url}
+        target="_blank"
+        className="text-xl lg:text-2xl font-semibold hover:underline"
+      >
+        {title}
+      </a>
+      <div className="flex justify-between">
         <div className="w-2/3">
-          <a
-            href={url}
-            target="_blank"
-            className="text-xl lg:text-2xl font-semibold hover:underline"
-          >
-            {title}
-          </a>
           <div className="flex mt-2">
-            <a href={company_url} target="_blank" className="hover:underline">
+            <a
+              href={company_url}
+              target="_blank"
+              className="text-sm lg:text-base hover:underline"
+            >
               {company}
             </a>
-            <p className="ml-5 text-green-800 font-bold">{type}</p>
+            <p className="ml-5 text-green-800 font-bold text-sm lg:text-base">
+              {type}
+            </p>
           </div>
         </div>
-        {<div className="1/3 self-end">{location}</div>}
+
+        <div className="1/3 self-end justify-end text-sm lg:text-base">
+          {location}
+        </div>
       </div>
     </div>
   );

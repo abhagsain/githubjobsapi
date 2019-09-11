@@ -15,8 +15,10 @@ export default class SearchBar extends Component {
       onSubmit,
       onTextChanged,
       location,
-      type,
+      clearSearch,
     } = this.context;
+    const clearButtonClass =
+      "text-gray-200 font-bold text-xl py-2 px-4 rounded w-full bg-gray-500 shadow-xl hover:shadow-xl active:shadow active:text-white active:bg-gray-600 ";
     const buttonClass =
       "text-white font-bold text-xl py-2 px-4 rounded w-full bg-blue-900 ";
     const btnClass = this.disableButton()
@@ -42,17 +44,17 @@ export default class SearchBar extends Component {
             value={location}
             type="text"
             onChange={onTextChanged}
-            className="shadow-xl appearance-none rounded py-4 px-6 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-2xl hover:shadow-2xl inline w-1/2 mr-3"
+            className="shadow-xl appearance-none rounded py-4 px-6 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-2xl hover:shadow-2xl inline w-full"
             placeholder="Location: Berlin"
           />
-          <input
+          {/* <input
             name="type"
             value={type}
             type="text"
             onChange={onTextChanged}
             className="shadow-xl appearance-none rounded py-4 px-6 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-2xl hover:shadow-2xl inline w-1/2"
             placeholder="Type: Full Time"
-          />
+          /> */}
         </div>
         <div className="text-center mt-5">
           <button
@@ -61,6 +63,9 @@ export default class SearchBar extends Component {
             className={btnClass}
           >
             Search
+          </button>
+          <button onClick={clearSearch} className={clearButtonClass + " mt-5"}>
+            Clear Search
           </button>
         </div>
         {/* <button className="bg-blue-500 px-5 py-3 text-white rounded inline">

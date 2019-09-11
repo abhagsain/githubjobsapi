@@ -28,18 +28,45 @@ class App extends React.Component {
   };
   onSubmit = e => {
     e.preventDefault();
-    console.log(`on Submit Called`);
-    const { searchedText } = this.state;
-    if (searchedText && searchedText.trim()) {
+    const { searchedText: description, location } = this.state;
+    if (description && description.trim()) {
       // Call the api
-      const URL = `/positions.json?description=${searchedText}`;
+      const URL = `/positions.json`;
       this.setState({ loading: true });
-      axios.get(URL).then(el => {
+      let params = { description };
+      if (location && location.trim()) {
+        params.location = location;
+      }
+      axios
+        .get(URL, {
+          params: params,
+        })
+        .then(el => {
+          const { data } = el;
+          this.setState({
+            jobs: data,
+            loading: false,
+          });
+        })
+        .catch(err => {
+          this.setState({
+            loading: false,
+            searchedText: "",
+            location: "",
+            error: { message: err.message, status: true },
+          });
+        });
+      /* axios.get(URL).then(el => {
         const { data } = el;
         console.log("TCL: data", data);
         this.setState({ jobs: data, loading: false, searchedText: "" });
-      });
+      }); */
     }
+  };
+  clearSearch = () => {
+    const { searchedText, location } = this.state;
+    if (searchedText || location)
+      this.setState({ searchedText: "", location: "" });
   };
   componentDidMount() {
     this.setState({ jobs: data, loading: false });
@@ -60,6 +87,7 @@ class App extends React.Component {
           onSearched: this.onSearched,
           onFilter: this.onFilter,
           onTextChanged: this.onTextChanged,
+          clearSearch: this.clearSearch,
         }}
       >
         <div>
