@@ -8350,6 +8350,10 @@ video {
   z-index: auto;
 }
 
+body {
+  background-color: #edf2f7;
+}
+
 /* Your custom CSS here */
 
 @media (min-width: 640px) {

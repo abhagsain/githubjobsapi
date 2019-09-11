@@ -1,10 +1,11 @@
 import React from "react";
 import "./index.css";
+import Hero from "./components/Hero/Hero";
 
 function App() {
   return (
-    <div className="text-center my-10">
-      <h2 className="text-5xl">React With Tailwind</h2>
+    <div>
+      <Hero />
     </div>
   );
 }

@@ -4,4 +4,8 @@
 
 @tailwind utilities;
 
+body {
+    @apply bg-gray-200;
+}
+
 /* Your custom CSS here */
