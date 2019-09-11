@@ -18,7 +18,8 @@
     "dev": "concurrently \"npm run watch:css\" \" npm run start \"",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,6 +36,10 @@
       "last 1 safari version"
     ]
   },
+  "author": {
+    "name": "Anurag Bhagsain"
+  },
+  "homepage": "https://abhagsain.github.io/githubjobsapi",
   "devDependencies": {
     "autoprefixer": "^9.6.1",
     "postcss-cli": "^6.1.3",

@@ -37,9 +37,9 @@ class App extends React.Component {
   onSubmit = e => {
     e.preventDefault();
     const { searchedText: description, location } = this.state;
-    if (description && description.trim()) {
+    if ((description && description.trim()) || (location && location.trim())) {
       // Call the api
-      const URL = `/positions.json`;
+      const URL = `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json`;
       this.setState({ loading: true });
       let params = { description };
       if (location && location.trim()) {
@@ -54,6 +54,7 @@ class App extends React.Component {
           this.setState({
             jobs: data,
             loading: false,
+            pagination: { ...this.state.pagination, currentPage: 1 },
           });
         })
         .catch(err => {
@@ -79,11 +80,21 @@ class App extends React.Component {
   componentDidMount() {
     // this.setState({ jobs: data, loading: false });
     // this.setState({ loading: false });
-    const URL = `/positions.json`;
-    axios.get(URL).then(el => {
-      const { data } = el;
-      this.setState({ jobs: data, loading: false });
-    });
+    const URL = `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json`;
+    axios
+      .get(URL)
+      .then(el => {
+        const { data } = el;
+        this.setState({ jobs: data, loading: false });
+      })
+      .catch(err => {
+        this.setState({
+          loading: false,
+          searchedText: "",
+          location: "",
+          error: { message: err.message, status: true },
+        });
+      });
   }
 
   render() {

@@ -47,14 +47,6 @@ export default class SearchBar extends Component {
             className="shadow-xl appearance-none rounded py-4 px-6 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-2xl hover:shadow-2xl inline w-full"
             placeholder="eg. New York"
           />
-          {/* <input
-            name="type"
-            value={type}
-            type="text"
-            onChange={onTextChanged}
-            className="shadow-xl appearance-none rounded py-4 px-6 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-2xl hover:shadow-2xl inline w-1/2"
-            placeholder="Type: Full Time"
-          /> */}
         </div>
         <div className="text-center mt-5">
           <button

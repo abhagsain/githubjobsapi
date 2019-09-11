@@ -9,7 +9,7 @@ export default function Navbar() {
         Github Jobs
       </a>
       <a
-        href="https://github.com/abhagsain/githubjobs"
+        href="https://github.com/abhagsain/githubjobsapi"
         target="_blank"
         className="text-base opacity-75"
       >
