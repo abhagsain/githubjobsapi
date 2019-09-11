@@ -37,13 +37,13 @@ class App extends React.Component {
     }
   };
   componentDidMount() {
-    this.setState({ jobs: data, loading: false });
-    // const URL = `/positions.json?description=javascript&location=new+york`;
-    // axios.get(URL).then(el => {
-    //   const { data } = el;
-    //   console.log("TCL: data", data);
-    //   this.setState({ jobs: data, loading: false });
-    // });
+    // this.setState({ jobs: data, loading: false });
+    const URL = `/positions.json`;
+    axios.get(URL).then(el => {
+      const { data } = el;
+      console.log("TCL: data", data);
+      this.setState({ jobs: data, loading: false });
+    });
   }
 
   render() {

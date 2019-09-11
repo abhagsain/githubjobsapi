@@ -7,7 +7,15 @@ export default class JobCard extends Component {
   render() {
     const { jobs, loading, filterValue, onFilter } = this.context;
     const data = jobs.filter(el => {
-      return el.title.toLowerCase().includes(filterValue.toLowerCase());
+      const title = el.title.toLowerCase();
+      const type = el.type.toLowerCase();
+      const location = el.location.toLowerCase();
+      const globalFilterValue = filterValue.toLowerCase();
+      return (
+        title.includes(globalFilterValue) ||
+        type.includes(globalFilterValue) ||
+        location.includes(globalFilterValue)
+      );
     });
     return (
       <div className="flex flex-col justify-center items-center my-10 mx-5">
@@ -27,7 +35,7 @@ export default class JobCard extends Component {
                 value={filterValue}
                 onChange={onFilter}
                 className="shadow appearance-none rounded py-4 px-6 text-gray-700 leading-tight focus:outline-none focus: inline w-full lg:w-2/3 self-center"
-                placeholder="Filter Searches eg. Engineer, Manager"
+                placeholder="Filter Searches eg. Engineer, Full time, Berlin etc"
               />
             </div>
             {data &&
@@ -39,6 +47,9 @@ export default class JobCard extends Component {
                 <h2 className="text-4xl">
                   No Result for{" "}
                   <p className="text-gray-600 inline">{filterValue}</p>
+                  <small className="block text-base">
+                    Clear filter to see all the results
+                  </small>
                 </h2>
               </div>
             )}
