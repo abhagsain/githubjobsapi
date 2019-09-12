@@ -28,41 +28,51 @@ export default class SearchBar extends Component {
         );
     return (
       <div className="w-full max-w-xl p-5 lg:p-0">
-        <div className="w-full">
-          <input
-            value={searchedText}
-            type="text"
-            name="searchedText"
-            onChange={onSearched}
-            className="shadow-xl appearance-none rounded py-4 px-6 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-2xl hover:shadow-2xl inline w-full"
-            placeholder="eg. Senior React Developer"
-          />
-        </div>
-        <div className="w-full flex justify-between">
-          <input
-            name="location"
-            value={location}
-            type="text"
-            onChange={onTextChanged}
-            className="shadow-xl appearance-none rounded py-4 px-6 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-2xl hover:shadow-2xl inline w-full"
-            placeholder="eg. New York"
-          />
-        </div>
-        <div className="text-center mt-5">
-          <button
-            disabled={this.disableButton()}
-            onClick={onSubmit}
-            className={btnClass}
-          >
-            Search
-          </button>
-          <button onClick={clearSearch} className={clearButtonClass + " mt-5"}>
-            Clear Search
-          </button>
-        </div>
-        {/* <button className="bg-blue-500 px-5 py-3 text-white rounded inline">
+        <form
+          onSubmit={() => {
+            return this.disableButton() ? () => {} : onSubmit();
+          }}
+        >
+          <div className="w-full">
+            <input
+              value={searchedText}
+              type="text"
+              name="searchedText"
+              onChange={onSearched}
+              onSubmit={onSubmit}
+              className="shadow-xl appearance-none rounded py-4 px-6 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-2xl hover:shadow-2xl inline w-full"
+              placeholder="eg. Senior React Developer"
+            />
+          </div>
+          <div className="w-full flex justify-between">
+            <input
+              name="location"
+              value={location}
+              type="text"
+              onChange={onTextChanged}
+              className="shadow-xl appearance-none rounded py-4 px-6 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-2xl hover:shadow-2xl inline w-full"
+              placeholder="eg. New York"
+            />
+          </div>
+          <div className="text-center mt-5">
+            <button
+              disabled={this.disableButton()}
+              onClick={onSubmit}
+              className={btnClass}
+            >
+              Search
+            </button>
+            <button
+              onClick={clearSearch}
+              className={clearButtonClass + " mt-5"}
+            >
+              Clear Search
+            </button>
+          </div>
+          {/* <button className="bg-blue-500 px-5 py-3 text-white rounded inline">
           Search
         </button> */}
+        </form>
       </div>
     );
   }
