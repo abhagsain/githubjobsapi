@@ -2,12 +2,17 @@ import React, { Component } from "react";
 import GlobalContext from "../../context/GlobalContext";
 export default class SearchBar extends Component {
   static contextType = GlobalContext;
+  searchInput = null;
   disableButton = () => {
     const { searchedText, type, location } = this.context;
     return (
       searchedText.trim() === "" && type.trim() === "" && location.trim() === ""
     );
   };
+  componentDidMount() {
+    this.searchInput.focus();
+  }
+
   render() {
     const {
       searchedText,
@@ -42,6 +47,9 @@ export default class SearchBar extends Component {
               onSubmit={onSubmit}
               className="shadow-xl appearance-none rounded py-4 px-6 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-2xl hover:shadow-2xl inline w-full"
               placeholder="eg. Senior React Developer"
+              ref={input => {
+                this.searchInput = input;
+              }}
             />
           </div>
           <div className="w-full flex justify-between">
