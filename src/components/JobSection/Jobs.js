@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import Job from "./Job";
 import Spinner from "../Spinner";
 import GlobalContext from "../../context/GlobalContext";
-import Pagination from "../Pagination/Pagination";
+import Pagination from "../pagination/Pagination";
 export default class JobCard extends Component {
   static contextType = GlobalContext;
   filterSearches = (jobs, filterValue) => {
