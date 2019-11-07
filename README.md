@@ -29,4 +29,4 @@ Took me  (almost) 7 hours to complete this project. Yes I track my time 😜
 
 Feel free to submit a PR. 
 
-Love to build stuff? ME TOO! Connect with me on [Twitter](https://twitter.com/BhagsainAnurag) or [LinkedIn](https://linkedin.com/in/anurag-bhagsain/) Let's bulid something together ❤
+Love to build stuff? ME TOO! Connect with me on [Twitter](https://twitter.com/anuragbhagsain) or [LinkedIn](https://linkedin.com/in/anurag-bhagsain/) Let's bulid something together ❤
