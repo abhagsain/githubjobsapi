@@ -76,8 +76,8 @@ export default class JobCard extends Component {
                     value={filterValue}
                     onChange={onFilter}
                     className="shadow appearance-none rounded py-4 px-6 text-gray-700  
-                              
-                              leading-tight focus:outline-none focus: inline w-full lg:w-2/3 self-center"
+                  
+                  leading-tight focus:outline-none focus: inline w-full lg:w-2/3 self-center"
                     placeholder="Filter Searches eg. Engineer or Remote or Berlin etc"
                   />
                 </div>
