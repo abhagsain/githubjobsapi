@@ -29,7 +29,7 @@ export default class SearchBar extends Component {
     const btnClass = this.disableButton()
       ? buttonClass.concat("opacity-75  cursor-not-allowed")
       : buttonClass.concat(
-          "active:bg-red-100 active:bg-blue-800 shadow-2xl hover:shadow-xl active:shadow"
+          "active:bg-red-100 active:bg-blue-800 shadow-2xl hover:shadow-xl active:shadow",
         );
     return (
       <div className="w-full max-w-xl p-5 lg:p-0">
@@ -45,7 +45,9 @@ export default class SearchBar extends Component {
               name="searchedText"
               onChange={onSearched}
               onSubmit={onSubmit}
-              className="shadow-xl appearance-none rounded py-4 px-6 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-2xl hover:shadow-2xl inline w-full"
+              className="shadow appearance-none rounded py-4 px-6 text-gray-700 mb-3 leading-tight focus:outline-none inline w-full  
+            border-transparent bg-gray-100 focus:bg-white border focus:border-gray-400
+              "
               placeholder="eg. Senior React Developer"
               ref={input => {
                 this.searchInput = input;
@@ -58,7 +60,9 @@ export default class SearchBar extends Component {
               value={location}
               type="text"
               onChange={onTextChanged}
-              className="shadow-xl appearance-none rounded py-4 px-6 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-2xl hover:shadow-2xl inline w-full"
+              className="shadow appearance-none rounded py-4 px-6 text-gray-700 mb-3 leading-tight focus:outline-none inline w-full 
+            border-transparent bg-gray-100 focus:bg-white border focus:border-gray-400
+              "
               placeholder="eg. New York"
             />
           </div>

@@ -45,12 +45,16 @@ class App extends React.Component {
       if (location && location.trim()) {
         params.location = location;
       }
+      document.querySelector("#main__content").scrollIntoView({
+        behavior: "smooth",
+      });
       axios
         .get(URL, {
           params: params,
         })
         .then(el => {
           const { data } = el;
+
           this.setState({
             jobs: data,
             loading: false,

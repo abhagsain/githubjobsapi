@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React, { Component } from "react";
 import Job from "./Job";
-import Spinner from "../Spinner";
 import GlobalContext from "../../context/GlobalContext";
 import Pagination from "../pagination/Pagination";
+import SkeletonCard from "../Skeletons/SkeletonCard";
 export default class JobCard extends Component {
   static contextType = GlobalContext;
   filterSearches = (jobs, filterValue) => {
@@ -54,9 +54,12 @@ export default class JobCard extends Component {
     const d = this.filterSearches(jobs, filterValue);
     const data = d.slice(indexOfFirstPost, indexOfLastPost);
     return (
-      <div className="flex flex-col justify-center items-center my-10 mx-5">
+      <div
+        className="flex flex-col justify-center items-center my-10 mx-5 output__content"
+        id="main__content"
+      >
         {loading ? (
-          <Spinner />
+          <SkeletonCard />
         ) : (
           <React.Fragment>
             {!error.status && (
@@ -73,8 +76,8 @@ export default class JobCard extends Component {
                     value={filterValue}
                     onChange={onFilter}
                     className="shadow appearance-none rounded py-4 px-6 text-gray-700  
-                    
-                    leading-tight focus:outline-none focus: inline w-full lg:w-2/3 self-center"
+                              
+                              leading-tight focus:outline-none focus: inline w-full lg:w-2/3 self-center"
                     placeholder="Filter Searches eg. Engineer or Remote or Berlin etc"
                   />
                 </div>
@@ -107,23 +110,36 @@ export default class JobCard extends Component {
             )}
             {error.status && (
               <div className="text-center">
-                <h2 className="text-4xl py-5">
+                <h2 className="text-2xl lg:text-3xl py-5">
                   Oops! Something went wrong
                   <small className="block text-base mt-3">
                     Please refresh the page
+                    <br />
+                    If the problem persists
                   </small>
+                  <nav className="sm:flex bg-gray-900 text-white py-3 px-2 sm:px-10 items-baseline justify-between items-center my-10 rounded text-center">
+                    <a
+                      href="https://github.com/abhagsain/githubjobsapi/issues"
+                      className="text-base text-center sm:text-xl font-bold hover:underline"
+                      target="_blank"
+                    >
+                      Please create an issue on GitHub
+                    </a>
+                  </nav>
                 </h2>
               </div>
             )}
-            <nav className="flex bg-gray-900 text-white py-3 px-10 items-baseline justify-between my-10 rounded">
-              <a
-                href="https://twitter.com/BhagsainAnurag"
-                className="sm:text-2xl font-bold hover:underline"
-                target="_blank"
-              >
-                Made with &hearts; by Anurag Bhagsain
-              </a>
-            </nav>
+            {!error.status && (
+              <nav className="flex bg-gray-900 text-white py-3 px-10 items-baseline justify-between my-10 rounded text-center">
+                <a
+                  href="https://abhagsain.com/"
+                  className="sm:text-xl font-bold hover:underline"
+                  target="_blank"
+                >
+                  Made with &hearts; by Anurag Bhagsain
+                </a>
+              </nav>
+            )}
           </React.Fragment>
         )}
       </div>

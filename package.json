@@ -14,7 +14,7 @@
     "build:css": "postcss src/styles/index.css -o src/index.css",
     "watch:css": "postcss src/styles/index.css -o src/index.css -w",
     "server": "../ghost_test ghost start",
-    "start": "react-scripts start",
+    "start": "set PORT=3006 && react-scripts start",
     "dev": "concurrently \"npm run watch:css\" \" npm run start \"",
     "build": "react-scripts build",
     "test": "react-scripts test",
