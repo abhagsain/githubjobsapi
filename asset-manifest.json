@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/githubjobsapi/static/css/main.55a5ac3a.chunk.css",
+    "main.js": "/githubjobsapi/static/js/main.1e3a7044.chunk.js",
+    "main.js.map": "/githubjobsapi/static/js/main.1e3a7044.chunk.js.map",
+    "runtime~main.js": "/githubjobsapi/static/js/runtime~main.0d4a8828.js",
+    "runtime~main.js.map": "/githubjobsapi/static/js/runtime~main.0d4a8828.js.map",
+    "static/js/2.2ee3721c.chunk.js": "/githubjobsapi/static/js/2.2ee3721c.chunk.js",
+    "static/js/2.2ee3721c.chunk.js.map": "/githubjobsapi/static/js/2.2ee3721c.chunk.js.map",
+    "index.html": "/githubjobsapi/index.html",
+    "precache-manifest.b85cf757cf7ed08d338c5eccd0b6aa6d.js": "/githubjobsapi/precache-manifest.b85cf757cf7ed08d338c5eccd0b6aa6d.js",
+    "service-worker.js": "/githubjobsapi/service-worker.js",
+    "static/css/main.55a5ac3a.chunk.css.map": "/githubjobsapi/static/css/main.55a5ac3a.chunk.css.map"
+  }
+}
