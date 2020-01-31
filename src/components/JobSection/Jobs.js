@@ -48,6 +48,7 @@ export default class JobCard extends Component {
       pagination: { currentPage, postPerPage },
       onFilter,
       error,
+      onModalOpen,
     } = this.context;
     const indexOfLastPost = currentPage * postPerPage;
     const indexOfFirstPost = indexOfLastPost - postPerPage;
@@ -89,7 +90,12 @@ export default class JobCard extends Component {
                 )}
                 {data &&
                   data.map(res => {
-                    return <Job key={res.id} data={res} />;
+                    return (
+                      <Job
+                        key={res.id}
+                        data={{ ...res, onModelOpen: onModalOpen }}
+                      />
+                    );
                   })}
                 {data && data.length === 0 && (
                   <div className="text-center">

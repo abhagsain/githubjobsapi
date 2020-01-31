@@ -63,22 +63,15 @@ const ModalContent = ({
   company_url,
   description,
   type,
-  company_logo,
   location,
   url,
 }) => {
-  const parsed = JSON.parse('""');
   return (
     <div className="h-screen fixed w-2/4 right-0 bg-gray-200 z-50 right-0 overflow-auto p-5 ">
       <div className="m-12">
         <div className="items-center flex justify-between border-b border-gray-400 pb-5">
-          <div className="flex items-center">
-            {/* company_logo && (
-              <div className="rounded-full justify-center items-center border border-gray-300 flex object-center w-24 overflow-hidden mr-2">
-                <img src={company_logo} alt="" />
-              </div>
-            ) */}
-            <div>
+          <div className="flex items-center w-full">
+            <div className="w-full">
               <div className="flex items-center justify-between">
                 {title && <h2 className="text-2xl font-bold mr-2">{title}</h2>}
                 {company_url && (
@@ -147,12 +140,13 @@ const ModalContent = ({
 };
 const Modal = () => {
   document.body.style.overflow = "hidden";
-
   const localContext = useContext(GlobalContext);
-  console.log("TCL: Close -> localContext", localContext);
   return (
     <div className="">
-      <div className="h-screen fixed w-2/4 left-0  bg-gray-800 opacity-75 overflow-hidden"></div>
+      <div
+        className="h-screen fixed w-2/4 left-0  bg-gray-800 opacity-75 overflow-hidden"
+        onClick={localContext.onModalClose}
+      ></div>
       <div className="flex">
         <Close />
         {/* <ModalContent
@@ -243,14 +237,25 @@ class App extends React.Component {
       pagination: { ...this.state.pagination, currentPage: pageNumber },
     });
   };
-  getJobInformation = () => {
-    const URL = `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions/d5fcc73d-490e-4074-ae38-67a533e1c0f6.json`;
+  toggleModal = () => {
+    this.setState({ isOpen: !this.state.isOpen });
+  };
+  onModalOpen = jobID => {
+    // this.setState({ isOpen: true });
+    this.getJobInformation(jobID);
+  };
+  onModalClose = () => {
+    document.body.style.overflow = "auto";
+    this.setState({ isOpen: false, singleJob: "" });
+  };
+  getJobInformation = ID => {
+    const URL = `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions/${ID}.json`;
     axios
       .get(URL)
       .then(el => {
         const { data } = el;
         console.log("TCL: getJobInformation -> data ", data);
-        this.setState({ singleJob: data, loading: false });
+        this.setState({ singleJob: data, loading: false, isOpen: true });
       })
       .catch(err => {
         this.setState({
@@ -259,28 +264,7 @@ class App extends React.Component {
         });
       });
   };
-  componentDidMount() {
-    //   const URL = `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json`;
-    //   axios
-    //     .get(URL)
-    //     .then(el => {
-    //       const { data } = el;
-    //       this.setState({ jobs: data, loading: false });
-    //     })
-    //     .catch(err => {
-    //       this.setState({
-    //         loading: false,
-    //         searchedText: "",
-    //         location: "",
-    //         error: { message: err.message, status: true },
-    //       });
-    //     });
-    this.setState({ jobs: data, loading: false });
-  }
-
   // componentDidMount() {
-  //   // this.setState({ jobs: data, loading: false });
-  //   // this.setState({ loading: false });
   //   const URL = `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json`;
   //   axios
   //     .get(URL)
@@ -296,10 +280,30 @@ class App extends React.Component {
   //         error: { message: err.message, status: true },
   //       });
   //     });
+  // this.setState({ jobs: data, loading: false });
   // }
 
+  componentDidMount() {
+    // this.setState({ jobs: data, loading: false });
+    // this.setState({ loading: false });
+    const URL = `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json`;
+    axios
+      .get(URL)
+      .then(el => {
+        const { data } = el;
+        this.setState({ jobs: data, loading: false });
+      })
+      .catch(err => {
+        this.setState({
+          loading: false,
+          searchedText: "",
+          location: "",
+          error: { message: err.message, status: true },
+        });
+      });
+  }
+
   render() {
-    console.log(this.state.jobs);
     return (
       <GlobalContext.Provider
         value={{
@@ -311,10 +315,12 @@ class App extends React.Component {
           clearSearch: this.clearSearch,
           paginate: this.paginate,
           onJobClicked: this.getJobInformation,
+          onModalClose: this.onModalClose,
+          onModalOpen: this.onModalOpen,
         }}
       >
         <div>
-          <Modal />
+          {this.state.isOpen && <Modal />}
           <Navbar />
           {/* <Hero /> */}
           <JobCard />

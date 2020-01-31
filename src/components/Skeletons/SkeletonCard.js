@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function SkeletonCard() {
-  const items = [1, 2, 3, 4, 5];
   /* 
   bg-white appearance-none rounded  text-gray-700  
  leading-tight focus:outline-none focus: inline w-full lg:w-2/3 self-center h-12 skeleton
@@ -13,9 +12,9 @@ export default function SkeletonCard() {
         <div className="bg-white appearance-none rounded inline w-full lg:w-2/3 self-center h-12 skeleton" />
       </div>
       <div className="h-16 bg-gray-200 w-full skeleton mt-2 mb-10" />
-      {items.map(item => (
+      {Array.from({ length: 5 }, (v, i) => (
         <div
-          key={item}
+          key={i}
           className="h-20 lg:h-32 mb-1 bg-gray-200 w-full skeleton "
         ></div>
       ))}
