@@ -2,17 +2,11 @@
 import React from "react";
 
 export default function Job({
-  data: { title, type, company, url, location, company_url },
+  data: { title, type, company, url, location, company_url, company_logo },
 }) {
   return (
-    <div className="shadow-md  bg-white p-5 border-b">
-      <a
-        href={url}
-        target="_blank"
-        className="text-xl lg:text-2xl font-semibold hover:underline"
-      >
-        {title}
-      </a>
+    <div className="shadow-md  bg-white p-5 border-b hover:bg-gray-100 cursor-pointer">
+      <h2 className="text-xl lg:text-2xl font-semibold">{title}</h2>
       <div className="flex justify-between">
         <div className="w-2/3">
           <div className="flex mt-2">
