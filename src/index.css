@@ -725,8 +725,8 @@ video {
 .close__button {
   left: 50%;
   z-index: 1000;
-  bottom: 0;
-  border: 2px solid red;
+  bottom: 5%;
+  position: fixed;
   transform: translateX(-50%);
 }
 

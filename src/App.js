@@ -69,13 +69,16 @@ const ModalContent = ({
               </div>
               <div className="desc flex mt-2 items-center flex-wrap justify-between sm:justify-start">
                 {company && (
-                  <div className="flex items-center mr-4" title="Company Name">
+                  <div
+                    className="flex items-center mr-4 mt-2"
+                    title="Company Name"
+                  >
                     <CompanyIcon className="h-5 w-5 fill-current text-blue-500 mr-1" />
                     <h2 className="text-sm md:text-lg">{company}</h2>
                   </div>
                 )}
                 {type && (
-                  <div className="flex items-center mr-4" title="Job Type">
+                  <div className="flex items-center mr-4 mt-2" title="Job Type">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -87,7 +90,7 @@ const ModalContent = ({
                   </div>
                 )}
                 {location && (
-                  <div className="flex items-center" title="Location">
+                  <div className="flex items-center mt-2" title="Location">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -124,7 +127,7 @@ const Modal = () => {
       ></div>
       <div className="flex" onClick={localContext.onModalClose}>
         <svg
-          className="absolute md:hidden z-50 h-16 w-16 close__button "
+          className="md:hidden h-16 w-16 close__button "
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -256,10 +259,10 @@ class App extends React.Component {
       .get(URL)
       .then(el => {
         const { data } = el;
-        console.log("TCL: getJobInformation -> data ", data);
         this.setState({ singleJob: data, loading: false, isOpen: true });
       })
       .catch(err => {
+        document.body.style.overflow = "auto";
         this.setState({
           loading: false,
           isOpen: false,
