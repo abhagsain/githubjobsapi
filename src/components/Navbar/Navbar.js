@@ -5,7 +5,7 @@ import React from "react";
 export default function Navbar() {
   return (
     <nav className="flex w-full bg-gray-900 text-white py-6 px-4 lg:px-10 items-baseline justify-between">
-      <a href="#" className="text-2xl font-bold">
+      <a href="/" className="text-2xl font-bold">
         Github Jobs
       </a>
       <a

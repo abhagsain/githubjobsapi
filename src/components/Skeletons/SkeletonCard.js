@@ -6,7 +6,7 @@ export default function SkeletonCard() {
  leading-tight focus:outline-none focus: inline w-full lg:w-2/3 self-center h-12 skeleton
    */
   return (
-    <div className="w-full xl:w-2/3 mx-auto">
+    <div className="w-full xl:w-2/3 mx-auto z-10">
       <div className="flex flex-col lg:flex-row justify-between my-5">
         <div className=" bg-white w-40 h-12 my-5 text-gray-800 skeleton" />
         <div className="bg-white appearance-none rounded inline w-full lg:w-2/3 self-center h-12 skeleton" />

@@ -2,8 +2,8 @@ import React from "react";
 
 export default function ModalSkeleton() {
   return (
-    <div className="h-screen fixed w-2/4 right-0 bg-gray-200 z-50 right-0 overflow-auto p-5 ">
-      <div className="m-12">
+    <div className="h-screen fixed right-0 bg-gray-200 z-40 right-0 overflow-auto p-5 w-full md:w-4/5 lg:w-3/5">
+      <div className="m-2 md:m-6 lg:m-12">
         <div className="items-center flex justify-between  pb-5">
           <div className="flex items-center w-full">
             <div className="w-full">

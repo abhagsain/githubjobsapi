@@ -24,40 +24,6 @@ const CompanyIcon = ({ className }) => (
   </svg>
 );
 
-const Close = () => {
-  const localContext = useContext(GlobalContext);
-  console.log("TCL: Close -> localContext", localContext);
-  return (
-    <div
-      className="bg-red-900 absolute z-50 mt-10 mr-6 flex items-center text-white"
-      style={{ left: "60px" }}
-      onClick={() => {
-        localContext.onJobClicked();
-      }}
-    >
-      <h2 className="text-lg text-white mr-2">Esc</h2>
-      <svg
-        className="h-8 w-8 "
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
-          stroke="#fff"
-        />
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M13.4141 12.0004L16.2425 14.8288C16.6331 15.2193 16.6331 15.8525 16.2425 16.243C15.852 16.6335 15.2188 16.6335 14.8283 16.243L11.9999 13.4146L9.17146 16.243C8.78094 16.6335 8.14777 16.6335 7.75725 16.243C7.36672 15.8525 7.36672 15.2193 7.75725 14.8288L10.5857 12.0004L7.75725 9.17195C7.36672 8.78143 7.36672 8.14826 7.75725 7.75774C8.14777 7.36721 8.78094 7.36721 9.17146 7.75774L11.9999 10.5862L14.8283 7.75774C15.2188 7.36721 15.852 7.36721 16.2425 7.75774C16.6331 8.14826 16.6331 8.78143 16.2425 9.17195L13.4141 12.0004Z"
-          fill="#fff"
-        />
-      </svg>
-    </div>
-  );
-};
 const ModalContent = ({
   company,
   title,
@@ -68,18 +34,24 @@ const ModalContent = ({
   url,
 }) => {
   return (
-    <div className="h-screen fixed w-2/4 right-0 bg-gray-200 z-50 right-0 overflow-auto p-5 ">
-      <div className="m-12">
+    <div className="h-screen fixed right-0 bg-gray-200 z-40 right-0 overflow-auto p-4 w-full md:w-4/5 lg:w-3/5">
+      <div className=" md:m-6 lg:m-12">
         <div className="items-center flex justify-between border-b border-gray-400 pb-5">
           <div className="flex items-center w-full">
             <div className="w-full">
-              <div className="flex items-center justify-between">
-                {title && <h2 className="text-2xl font-bold mr-2">{title}</h2>}
-                {company_url && (
-                  <div className="">
+              <div className="flex flex-col xs:flex-row items-center justify-between">
+                {title && (
+                  <h2 className="text-sm xs:text-sm sm:text-xl md:text-2xl font-bold mr-2">
+                    {title}
+                  </h2>
+                )}
+                {url && (
+                  <div className="text-xs xs:text-sm mt-2 md:mt-0 w-full max-w-sm md:max-w-auto md:w-auto">
                     <a
                       href={url}
-                      className="text-xl font-bold px-12 flex items-center  w-full shadow-sm py-2 bg-blue-200 uppercase text-blue-700 tracking rounded-full hover:bg-blue-300 "
+                      className="text-sm sm:text-lg md:text-lg  font-bold px-12 flex items-center  w-full shadow-sm py-2 bg-blue-200 uppercase text-blue-700 tracking rounded-full hover:bg-blue-300 
+                      justify-center
+                      "
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -95,11 +67,11 @@ const ModalContent = ({
                   </div>
                 )}
               </div>
-              <div className="desc flex mt-2 items-center flex-wrap">
+              <div className="desc flex mt-2 items-center flex-wrap justify-between sm:justify-start">
                 {company && (
                   <div className="flex items-center mr-4" title="Company Name">
                     <CompanyIcon className="h-5 w-5 fill-current text-blue-500 mr-1" />
-                    <h2 className="text-lg">{company}</h2>
+                    <h2 className="text-sm md:text-lg">{company}</h2>
                   </div>
                 )}
                 {type && (
@@ -111,7 +83,7 @@ const ModalContent = ({
                     >
                       <path d="M8 7V5c0-1.1.9-2 2-2h4a2 2 0 0 1 2 2v2h4a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9c0-1.1.9-2 2-2h4zm8 2H8v10h8V9zm2 0v10h2V9h-2zM6 9H4v10h2V9zm4-2h4V5h-4v2z" />
                     </svg>
-                    <h3 className="full-time text-lg">{type}</h3>
+                    <h3 className="text-sm md:text-lg">{type}</h3>
                   </div>
                 )}
                 {location && (
@@ -123,7 +95,7 @@ const ModalContent = ({
                     >
                       <path d="M5.64 16.36a9 9 0 1 1 12.72 0l-5.65 5.66a1 1 0 0 1-1.42 0l-5.65-5.66zm11.31-1.41a7 7 0 1 0-9.9 0L12 19.9l4.95-4.95zM12 14a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0-2a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
                     </svg>
-                    <h3 className="full-time text-lg">{location}</h3>
+                    <h3 className="text-sm md:text-lg">{location}</h3>
                   </div>
                 )}
               </div>
@@ -145,9 +117,33 @@ const Modal = () => {
   return (
     <div className="">
       <div
-        className="h-screen fixed w-2/4 left-0  bg-gray-800 opacity-75 overflow-hidden"
+        className="h-screen fixed hidden md:block md:w-1/5 lg:w-2/5 left-0 bg-gray-800 opacity-75 overflow-hidden z-20
+        xl:block
+        "
         onClick={localContext.onModalClose}
       ></div>
+      <div className="flex" onClick={localContext.onModalClose}>
+        <svg
+          className="absolute md:hidden z-50 h-16 w-16 close__button "
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+            fill="white"
+          />
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M13.4142 12L16.2427 14.8284C16.6332 15.219 16.6332 15.8521 16.2427 16.2427C15.8521 16.6332 15.219 16.6332 14.8284 16.2427L12 13.4142L9.17158 16.2427C8.78106 16.6332 8.1479 16.6332 7.75737 16.2427C7.36685 15.8521 7.36685 15.219 7.75737 14.8284L10.5858 12L7.75737 9.17158C7.36685 8.78106 7.36685 8.1479 7.75737 7.75737C8.1479 7.36685 8.78106 7.36685 9.17158 7.75737L12 10.5858L14.8284 7.75737C15.219 7.36685 15.8521 7.36685 16.2427 7.75737C16.6332 8.1479 16.6332 8.78106 16.2427 9.17158L13.4142 12Z"
+            fill="#0D2B3E"
+          />
+        </svg>
+      </div>
+
       <div className="flex">
         {/* <Close /> */}
         {localContext.singleJob ? (
@@ -155,7 +151,8 @@ const Modal = () => {
         ) : (
           <ModalSkeleton />
         )}
-        {/*  <ModalContent
+        {/* 
+          <ModalContent
             company="Simba, Inc."
             type="Full Time"
             description="This is some description"
@@ -171,7 +168,7 @@ class App extends React.Component {
     jobs: [],
     searchedText: "",
     loading: true,
-    singleJob: "",
+    singleJob: null,
     error: { status: false, message: "" },
     filterValue: "",
     filteredJobs: [],

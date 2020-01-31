@@ -19,7 +19,9 @@
 .modal__content address {
   margin: 1em 0;
 }
-
+.modal__content * {
+  font-size: 1rem;
+}
 .modal__content ol {
   display: block;
   list-style-type: decimal;
@@ -31,16 +33,27 @@
 }
 
 .modal__content h1 {
-  font-size: 1.5rem;
   font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 700;
 }
 
 .modal__content h2 {
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-weight: 700;
 }
 
+@screen sm {
+  .modal__content * {
+    font-size: 1.1rem;
+  }
+  .modal__content h1 {
+    font-size: 1.2rem;
+  }
+  .modal__content h2 {
+    font-size: 1rem;
+  }
+}
 .modal__content ul {
   display: block;
   list-style-type: disc;
@@ -85,6 +98,13 @@
   background-repeat: no-repeat; */
   /* background-position: 0 0, 0 calc(var(--card-height) + 2px); */
   /* 0 calc(var(--card-height) * 2 + 4px); */
+}
+.close__button {
+  left: 50%;
+  z-index: 1000;
+  bottom: 0;
+  border: 2px solid red;
+  transform: translateX(-50%);
 }
 @media only screen and (max-width: 670px) {
   .skeleton {

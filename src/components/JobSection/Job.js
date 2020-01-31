@@ -9,10 +9,10 @@ export default function Job({
       className="shadow-md  bg-white p-5 border-b hover:bg-gray-100 cursor-pointer"
       onClick={() => onModelOpen(id)}
     >
-      <h2 className="text-xl lg:text-2xl font-semibold">{title}</h2>
+      <h2 className="text-base sm:text-xl  font-semibold">{title}</h2>
       <div className="flex justify-between">
-        <div className="w-2/3">
-          <div className="flex mt-2">
+        <div className="w-2/3 ">
+          <div className="flex mt-2 ">
             <a
               href={company_url}
               target="_blank"
@@ -20,7 +20,7 @@ export default function Job({
             >
               {company}
             </a>
-            <p className="ml-5 text-green-800 font-bold text-sm lg:text-base">
+            <p className="ml-5 text-green-800 font-bold text-sm lg:text-base hidden sm:block">
               {type}
             </p>
           </div>
