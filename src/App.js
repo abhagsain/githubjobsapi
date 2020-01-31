@@ -15,8 +15,8 @@ const CompanyIcon = ({ className }) => (
   >
     <rect x="2" y="10" width="20" height="12" rx="2" />
     <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
+      fillRule="evenodd"
+      clipRule="evenodd"
       d="M6 4H18C18 2.89543 17.1046 2 16 2H8C6.89543 2 6 2.89543 6 4ZM4 8H20C20 6.89543 19.1046 6 18 6H6C4.89543 6 4 6.89543 4 8Z"
       fill="#3182CE"
     />
@@ -79,12 +79,12 @@ const ModalContent = ({
               </div>
             ) */}
             <div>
-              <div className="flex items-center">
+              <div className="flex items-center justify-between">
                 {title && <h2 className="text-2xl font-bold mr-2">{title}</h2>}
                 {company_url && (
                   <div className="">
                     <a
-                      href={company_url}
+                      href={url}
                       className="text-xl font-bold px-12 flex items-center  w-full shadow-sm py-2 bg-blue-200 uppercase text-blue-700 tracking rounded-full hover:bg-blue-300 "
                       target="_blank"
                       rel="noopener noreferrer"
@@ -101,8 +101,7 @@ const ModalContent = ({
                   </div>
                 )}
               </div>
-              <div></div>
-              <div className="desc flex mt-2 items-center">
+              <div className="desc flex mt-2 items-center flex-wrap">
                 {company && (
                   <div className="flex items-center mr-4" title="Company Name">
                     <CompanyIcon className="h-5 w-5 fill-current text-blue-500 mr-1" />
@@ -139,7 +138,7 @@ const ModalContent = ({
         </div>
 
         <p
-          className="mt-5 text-lg"
+          className="mt-5 text-lg modal__content"
           dangerouslySetInnerHTML={{ __html: description }}
         />
       </div>
@@ -245,7 +244,7 @@ class App extends React.Component {
     });
   };
   getJobInformation = () => {
-    const URL = `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions/d4013adb-449f-4a38-a1ca-5254ffd868b5.json`;
+    const URL = `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions/d5fcc73d-490e-4074-ae38-67a533e1c0f6.json`;
     axios
       .get(URL)
       .then(el => {

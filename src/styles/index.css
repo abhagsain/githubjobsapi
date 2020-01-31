@@ -2,6 +2,63 @@
 
 @tailwind components;
 
+.modal__content h1,
+.modal__content h2,
+.modal__content h3,
+.modal__content h4,
+.modal__content h5,
+.modal__content h6,
+.modal__content p,
+.modal__content pre,
+.modal__content blockquote,
+.modal__content label,
+.modal__content ul,
+.modal__content ol,
+.modal__content dl,
+.modal__content fieldset,
+.modal__content address {
+  margin: 1em 0;
+}
+
+.modal__content ol {
+  display: block;
+  list-style-type: decimal;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+
+.modal__content h1 {
+  font-size: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.modal__content h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.modal__content ul {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+.modal__content a {
+  /* border-bottom: 2px solid rgb(10, 142, 250); */
+  color: #3182ce;
+  /* border-bottom: 1px solid transparent; */
+}
+.modal__content a:hover {
+  /* border-bottom: 1px solid black; */
+  color: #1263af;
+}
 .skeleton {
   /*   background: red; */
   --explore-height: 40px;
