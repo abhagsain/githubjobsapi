@@ -275,24 +275,6 @@ class App extends React.Component {
         });
       });
   };
-  // componentDidMount() {
-  //   const URL = `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json`;
-  //   axios
-  //     .get(URL)
-  //     .then(el => {
-  //       const { data } = el;
-  //       this.setState({ jobs: data, loading: false });
-  //     })
-  //     .catch(err => {
-  //       this.setState({
-  //         loading: false,
-  //         searchedText: "",
-  //         location: "",
-  //         error: { message: err.message, status: true },
-  //       });
-  //     });
-  // this.setState({ jobs: data, loading: false });
-  // }
 
   componentDidMount() {
     // this.setState({ jobs: data, loading: false });
@@ -336,7 +318,7 @@ class App extends React.Component {
         <div>
           {this.state.isOpen && <Modal />}
           <Navbar />
-          {/* <Hero /> */}
+          {<Hero />}
           <JobCard />
         </div>
       </GlobalContext.Provider>
