@@ -195,6 +195,11 @@ class App extends React.Component {
       pagination: { ...this.state.pagination, currentPage: 1 },
     });
   };
+  onEscKeyDown = event => {
+    if (event.keyCode === 27) {
+      this.onModalClose();
+    }
+  };
   onSubmit = e => {
     e.preventDefault();
     const { searchedText: description, location } = this.state;
@@ -291,6 +296,7 @@ class App extends React.Component {
 
   componentDidMount() {
     // this.setState({ jobs: data, loading: false });
+    document.addEventListener("keydown", this.onEscKeyDown, false);
     const URL = `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json`;
     axios
       .get(URL)
@@ -306,6 +312,9 @@ class App extends React.Component {
           error: { message: err.message, status: true },
         });
       });
+  }
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.onEscKeyDown, false);
   }
 
   render() {
