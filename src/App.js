@@ -6,6 +6,7 @@ import axios from "axios";
 import data from "./data.json";
 import GlobalContext from "./context/GlobalContext";
 import Navbar from "./components/Navbar/Navbar";
+import ModalSkeleton from "./components/Skeletons/ModalSkeleton";
 const CompanyIcon = ({ className }) => (
   <svg
     className={className}
@@ -148,15 +149,19 @@ const Modal = () => {
         onClick={localContext.onModalClose}
       ></div>
       <div className="flex">
-        <Close />
-        {/* <ModalContent
-          company="Simba, Inc."
-          type="Full Time"
-          description="This is some description"
-          location="New Orlando"
-          title="Software Engineer"
-        /> */}
-        {<ModalContent {...localContext.singleJob} />}
+        {/* <Close /> */}
+        {localContext.singleJob ? (
+          <ModalContent {...localContext.singleJob} />
+        ) : (
+          <ModalSkeleton />
+        )}
+        {/*  <ModalContent
+            company="Simba, Inc."
+            type="Full Time"
+            description="This is some description"
+            location="New Orlando"
+            title="Software Engineer"
+          /> */}
       </div>
     </div>
   );
@@ -241,7 +246,7 @@ class App extends React.Component {
     this.setState({ isOpen: !this.state.isOpen });
   };
   onModalOpen = jobID => {
-    // this.setState({ isOpen: true });
+    this.setState({ isOpen: true });
     this.getJobInformation(jobID);
   };
   onModalClose = () => {
@@ -260,6 +265,7 @@ class App extends React.Component {
       .catch(err => {
         this.setState({
           loading: false,
+          isOpen: false,
           error: { message: err.message, status: true },
         });
       });
@@ -285,7 +291,6 @@ class App extends React.Component {
 
   componentDidMount() {
     // this.setState({ jobs: data, loading: false });
-    // this.setState({ loading: false });
     const URL = `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json`;
     axios
       .get(URL)
