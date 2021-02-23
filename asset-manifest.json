@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.2ed3fcb8.chunk.css",
-    "main.js": "/static/js/main.e50f968d.chunk.js",
-    "main.js.map": "/static/js/main.e50f968d.chunk.js.map",
-    "runtime~main.js": "/static/js/runtime~main.c8d11921.js",
-    "runtime~main.js.map": "/static/js/runtime~main.c8d11921.js.map",
-    "static/js/2.2ee3721c.chunk.js": "/static/js/2.2ee3721c.chunk.js",
-    "static/js/2.2ee3721c.chunk.js.map": "/static/js/2.2ee3721c.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.6f9d54eb2f215a79c50fd2843c2927da.js": "/precache-manifest.6f9d54eb2f215a79c50fd2843c2927da.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.2ed3fcb8.chunk.css.map": "/static/css/main.2ed3fcb8.chunk.css.map"
+    "main.css": "/githubjobsapi/static/css/main.ba401202.chunk.css",
+    "main.js": "/githubjobsapi/static/js/main.e50f968d.chunk.js",
+    "main.js.map": "/githubjobsapi/static/js/main.e50f968d.chunk.js.map",
+    "runtime~main.js": "/githubjobsapi/static/js/runtime~main.0d4a8828.js",
+    "runtime~main.js.map": "/githubjobsapi/static/js/runtime~main.0d4a8828.js.map",
+    "static/js/2.2ee3721c.chunk.js": "/githubjobsapi/static/js/2.2ee3721c.chunk.js",
+    "static/js/2.2ee3721c.chunk.js.map": "/githubjobsapi/static/js/2.2ee3721c.chunk.js.map",
+    "index.html": "/githubjobsapi/index.html",
+    "precache-manifest.4c312c09b4bb78df77c485d277c09802.js": "/githubjobsapi/precache-manifest.4c312c09b4bb78df77c485d277c09802.js",
+    "service-worker.js": "/githubjobsapi/service-worker.js",
+    "static/css/main.ba401202.chunk.css.map": "/githubjobsapi/static/css/main.ba401202.chunk.css.map"
   }
 }
