@@ -39,7 +39,6 @@
   "author": {
     "name": "Anurag Bhagsain"
   },
-  "homepage": "https://abhagsain.github.io/githubjobsapi",
   "devDependencies": {
     "autoprefixer": "^9.6.1",
     "postcss-cli": "^6.1.3",

@@ -154,14 +154,6 @@ const Modal = () => {
         ) : (
           <ModalSkeleton />
         )}
-        {/* 
-          <ModalContent
-            company="Simba, Inc."
-            type="Full Time"
-            description="This is some description"
-            location="New Orlando"
-            title="Software Engineer"
-          /> */}
       </div>
     </div>
   );
@@ -195,17 +187,17 @@ class App extends React.Component {
       pagination: { ...this.state.pagination, currentPage: 1 },
     });
   };
-  onEscKeyDown = event => {
+  onEscKeyDown = (event) => {
     if (event.keyCode === 27) {
       this.onModalClose();
     }
   };
-  onSubmit = e => {
+
+  onSubmit = (e) => {
     e.preventDefault();
     const { searchedText: description, location } = this.state;
     if ((description && description.trim()) || (location && location.trim())) {
-      // Call the api
-      const URL = `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json`;
+      const URL = `https://github-api-next.vercel.app/api/positions`;
       this.setState({ loading: true });
       let params = { description };
       if (location && location.trim()) {
@@ -218,16 +210,16 @@ class App extends React.Component {
         .get(URL, {
           params: params,
         })
-        .then(el => {
+        .then((el) => {
           const { data } = el;
 
           this.setState({
-            jobs: data,
+            jobs: data.data,
             loading: false,
             pagination: { ...this.state.pagination, currentPage: 1 },
           });
         })
-        .catch(err => {
+        .catch((err) => {
           this.setState({
             loading: false,
             searchedText: "",
@@ -242,7 +234,7 @@ class App extends React.Component {
     if (searchedText || location)
       this.setState({ searchedText: "", location: "" });
   };
-  paginate = pageNumber => {
+  paginate = (pageNumber) => {
     this.setState({
       pagination: { ...this.state.pagination, currentPage: pageNumber },
     });
@@ -250,7 +242,7 @@ class App extends React.Component {
   toggleModal = () => {
     this.setState({ isOpen: !this.state.isOpen });
   };
-  onModalOpen = jobID => {
+  onModalOpen = (jobID) => {
     this.setState({ isOpen: true });
     this.getJobInformation(jobID);
   };
@@ -258,15 +250,15 @@ class App extends React.Component {
     document.body.style.overflow = "auto";
     this.setState({ isOpen: false, singleJob: "" });
   };
-  getJobInformation = ID => {
-    const URL = `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions/${ID}.json`;
+  getJobInformation = (ID) => {
+    const URL = `https://github-api-next.vercel.app/api/positions/${ID}.json`;
     axios
       .get(URL)
-      .then(el => {
+      .then((el) => {
         const { data } = el;
-        this.setState({ singleJob: data, loading: false, isOpen: true });
+        this.setState({ singleJob: data.data, loading: false, isOpen: true });
       })
-      .catch(err => {
+      .catch((err) => {
         document.body.style.overflow = "auto";
         this.setState({
           loading: false,
@@ -279,14 +271,14 @@ class App extends React.Component {
   componentDidMount() {
     // this.setState({ jobs: data, loading: false });
     document.addEventListener("keydown", this.onEscKeyDown, false);
-    const URL = `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json`;
+    const URL = `https://github-api-next.vercel.app/api/positions`;
     axios
       .get(URL)
-      .then(el => {
+      .then((el) => {
         const { data } = el;
-        this.setState({ jobs: data, loading: false });
+        this.setState({ jobs: data.data, loading: false });
       })
-      .catch(err => {
+      .catch((err) => {
         this.setState({
           loading: false,
           searchedText: "",

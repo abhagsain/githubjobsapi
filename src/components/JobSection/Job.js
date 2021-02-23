@@ -33,13 +33,3 @@ export default function Job({
     </div>
   );
 }
-/* 
-
-            {company_logo && (
-              <img
-                src={company_logo}
-                alt=""
-                className="h-6 w-6 object-cover object-center"
-              />
-            )}
- */

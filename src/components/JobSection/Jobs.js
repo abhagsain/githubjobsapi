@@ -7,7 +7,7 @@ import SkeletonCard from "../Skeletons/SkeletonCard";
 export default class JobCard extends Component {
   static contextType = GlobalContext;
   filterSearches = (jobs, filterValue) => {
-    return jobs.filter(el => {
+    return jobs.filter((el) => {
       const title = el.title.toLowerCase();
       const type = el.type.toLowerCase();
       const location = el.location.toLowerCase();
@@ -89,7 +89,7 @@ export default class JobCard extends Component {
                   />
                 )}
                 {data &&
-                  data.map(res => {
+                  data.map((res) => {
                     return (
                       <Job
                         key={res.id}
