@@ -1,0 +1,25 @@
+{
+  "name": "Github Jobs",
+  "icons": [
+    {
+      "src": "/images/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/images/icon-96.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "/images/icon-48.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    }
+  ],
+  "start_url": ".",
+  "short_name": "Jobs",
+  "theme_color": "#4299e1",
+  "background_color": "#4299e1",
+  "display": "standalone"
+}
