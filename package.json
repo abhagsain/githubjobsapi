@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://abhagsain.github.io/githubjobsapi",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "concurrently": "^4.1.1",
     "gh-pages": "^2.1.1",
     "react": "^16.9.0",
